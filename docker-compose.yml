@@ -1,0 +1,14 @@
+tacoday-api:
+    image: jgilli/tacoday-api
+    ports:
+        - "8080:8080"
+    environment:
+        FB_APP_TARGET_PAGE:
+        FB_APP_TOKEN:
+
+taco-slackbot:
+    image: jgilli/taco-slackbot
+    links:
+        - tacoday-api
+    environment:
+        SLACK_TOKEN:
